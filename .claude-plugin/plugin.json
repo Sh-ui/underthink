@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "underthink",
   "displayName": "Underthink",
-  "version": "1.0.1",
-  "description": "Run from Sonnet 5 at medium effort; Fable and Opus handle deep judgment underneath while bounded Sonnet builders execute the plan.",
+  "version": "1.0.2",
+  "description": "Run from Sonnet 5 at medium effort; Fable settles direction, Opus compiles dispatches, and bounded Sonnet builders execute.",
   "author": {
     "name": "Shui",
     "url": "https://github.com/Sh-ui"

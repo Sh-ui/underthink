@@ -70,9 +70,8 @@ flowchart TB
 | `underthink:auditor` | Independent attempts to disprove completion |
 | `underthink:crawler` | One missing fact, with source pointers |
 
-The host and builders do not get `ultrathink`. Architect, planner, and auditor
-dispatches do. Hard thinking is spent at the boundaries where it changes the
-route, not on every file edit.
+The host and builders stay at medium effort. Deep-agent effort is pinned in
+their agent definitions, without raising the host's effort.
 
 ## Use
 
@@ -92,6 +91,8 @@ For a side-effect-free explanation:
 
 ## Routing rules
 
+- Strategic runbook, audit, handoff, or roadmap: Fable synthesizes it, then
+  Opus compiles the dispatch manifest.
 - Existing, explicit atomic task: builder.
 - Missing fact: crawler.
 - Vague or architecture-bearing direction: architect, then planner.
@@ -100,8 +101,10 @@ For a side-effect-free explanation:
 - Completion or integration claim: auditor.
 - Product choice: the host asks the user.
 
-The shortest sound route wins. Underthink does not manufacture an architecture
-phase when the repository already contains one.
+The shortest sound route wins. For nontrivial work from strategic files, the
+host passes the source pointers to Fable without interpreting them; Opus turns
+Fable's result into bounded packets before a builder starts. Underthink invokes
+only its own scoped agents.
 
 ## Session precondition
 

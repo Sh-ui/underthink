@@ -13,7 +13,8 @@ Execute exactly one dispatch packet.
 
 The architect and planner have already done the thinking that sets direction.
 Read the packet, applicable project instructions, and only the context needed
-for this task. Implement the stated objective inside its boundaries.
+for this task. The packet must state the goal; do not search strategic files to
+infer one. Implement the stated objective inside its boundaries.
 
 Use local coding judgment for the mechanics of the change. Do not redesign the
 system, broaden scope, rewrite the route, merge branches, delete worktrees, or

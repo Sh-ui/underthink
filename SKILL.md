@@ -7,178 +7,146 @@ argument-hint: "[project direction, source, pointer, or constraint]"
 
 # /underthink
 
-Put the deep thinking underneath the work.
-
 Apply Underthink to `$ARGUMENTS`. Treat the arguments as ordinary project
-direction. Infer the project, source, desired outcome, autonomy, and constraints
-from the prompt, cwd, conversation, and direct evidence.
+direction. Infer the project, source, outcome, autonomy, and constraints from
+the prompt, cwd, conversation, and direct evidence.
 
 For `help`, explain the workflow and examples without inspecting a project,
-reading the clipboard, changing state, or invoking agents.
+changing state, or invoking agents.
 
 ## Preflight
 
-Underthink does not change the session's model or effort. Before inspecting a
-project or invoking an agent, verify that the current session is running
-Sonnet 5 at medium effort.
-
-If it is not, stop and tell the user to run:
+Underthink does not change the session model or effort. Before inspecting a
+project or invoking an agent, verify that this session is Sonnet 5 at medium
+effort. If it is not, stop and tell the user to run:
 
 ```text
 /model sonnet
 /effort medium
 ```
 
-Then ask them to invoke `/underthink` again. Do not continue the workflow or
-change project state from the wrong host configuration.
+Then ask them to invoke `/underthink` again.
 
-## The joke is the architecture
+## Roles
 
-The user starts Underthink from a Sonnet 5 session at medium effort. That main
-thread stays quick, holds context, and runs the job. It does not imitate the
-models beneath it.
+The Sonnet host holds context, routes work, checks evidence, and talks to the
+user. It does not perform architecture or turn strategic files into tasks.
 
-Fable and Opus do the expensive thinking as subagents:
+- `underthink:architect` (Fable) decides what the work means.
+- `underthink:planner` (Opus) turns settled meaning into a dispatch route.
+- `underthink:builder` (Sonnet 5 medium) executes one bounded task.
+- `underthink:auditor` (Opus) tries to disprove completion.
+- `underthink:crawler` (Haiku) answers one missing factual question.
 
-- Fable decides what the work means and when that judgment must return.
-- Opus turns settled design into a route and later tries to break the result.
+Use only these scoped agents. Never substitute Relay, built-in, unscoped, or
+similarly named agents.
 
-Sonnet builders also run at medium effort. They receive a settled plan, make one
-bounded change, run its checks, and stop. Their job is execution, not invention.
+The deep agents pin their own effort in their agent definitions. Do not place
+thinking-budget trigger words in this skill or ordinary dispatch prompts; they
+can raise the host's effort too.
 
-This is Underthink in both senses: the host and builders avoid unnecessary
-deliberation, while the deepest thinking happens under the host.
+## Orient
 
-## Start with the repository, not a ceremony
+Resolve loose pointers such as project names, paths, `@` references, branches,
+worktrees, plans, issues, roadmaps, handoffs, audits, and the cwd. Ask one
+focused question only when materially different targets remain.
 
-Resolve loose pointers such as project names, branches, worktrees, milestones,
-paths, `@` references, URLs, plans, issues, roadmaps, todos, PRs, and the cwd.
-
-Ask one focused question only when materially different targets remain. Before
-changing files, verify the canonical repository, primary branch, current
-branch, worktree, HEAD, upstream, dirty state, and concurrent work.
-
-When isolated work is requested, create it from the canonical repository using
-local conventions. Keep the primary worktree and branch untouched. Do not merge
+Before mutation, verify the canonical repository, primary branch, current
+branch, worktree, HEAD, upstream, dirty state, and concurrent work. Do not merge
 or delete worktrees without explicit permission.
 
-## Take the shortest sound route
+## Route
 
-Use established docs, roadmaps, issues, state, and tests directly when they
-already preserve intent, boundaries, next actions, and validation.
+Use the smallest route that preserves role boundaries:
 
-Choose by the missing thing:
-
-- Missing fact: dispatch `underthink:crawler`.
-- Vague, contradictory, greenfield, or architecture-bearing direction:
-  dispatch `underthink:architect`.
-- Settled but nontrivial work that needs ordering, parallelism, or continuity:
-  dispatch `underthink:planner`.
-- Explicit atomic work: dispatch `underthink:builder`.
-- Completion claim or integration gate: dispatch `underthink:auditor`.
+- Missing fact: crawler.
+- Genuinely atomic task with explicit scope and validation: builder.
+- Vague, contradictory, architecture-bearing direction: architect, then
+  planner.
+- Nontrivial continuation from strategic files such as `SHIP.md`, `AUDIT.md`,
+  a handoff, or a roadmap: architect, then planner.
+- Settled design that still needs ordering, packets, or gates: planner.
+- Completion or integration claim: auditor.
 - Product choice: ask the user through the host.
 
-Do not create duplicate planning documents just to fit this workflow.
+When strategic files already exist, the user should only need to point at them
+or say to resume. The host gives Fable the natural goal, source paths, project
+location, and observed repository state. It does not summarize the documents,
+propose a ruling, or tell Fable what conclusion to reach.
 
-## Keep thinking where it belongs
+Fable reads the primary sources and returns a compact handoff containing the
+settled intent, locked decisions, unresolved conflicts, non-goals, success
+conditions, and strategic breakpoints. Once Fable reports ready, Opus compiles
+that handoff and the canonical sources into the runnable route.
 
-The host and builders stay at medium effort. Do not prompt them to think harder.
-They should classify, execute, check, and stop.
+Do not start a non-atomic builder before Opus has produced its packet.
 
-Every dispatch to `underthink:architect`, `underthink:planner`, or
-`underthink:auditor` must include the literal word `ultrathink`. These roles own
-the decisions for which deeper reasoning is worth paying.
-
-### Architect
-
-Give `underthink:architect` the natural goal, primary source pointers, project
-location, current evidence, and the word `ultrathink`. Do not pre-digest the
-source into a host-authored design.
+## Architect
 
 The architect:
 
+- reads primary sources rather than trusting a host summary;
 - separates evidence, inference, and desired future state;
 - resolves contradictions and unsupported assumptions;
 - defines architecture, invariants, non-goals, and observable success;
 - identifies only user choices that materially change the design;
-- names semantic breakpoints where it must inspect the run again.
+- names semantic breakpoints where it must return.
 
-If the architect needs the user, relay its exact question and choices, record
-the answer where requested, and resume it. Planning waits until design is ready.
+If user input is needed, relay Fable's exact question and choices. Planning
+waits until Fable reports ready.
 
-### Planner
+## Planner
 
-Give `underthink:planner` the settled design, breakpoints, project conventions,
-current state, desired autonomy, and the word `ultrathink`.
+Give Opus Fable's handoff, source pointers, project conventions, current state,
+desired autonomy, and breakpoints.
 
-The planner:
+Opus preserves the settled design and returns the smallest dependency-aware
+rung graph. Every runnable packet must name:
 
-- preserves the architect's decisions;
-- creates the smallest dependency-aware set of bounded tasks;
-- assigns one owner and non-overlapping scope to each task;
-- gives every dispatch context pointers, objective, expected result,
-  acceptance evidence, and stop conditions;
-- exposes safe parallel work and convergence points;
-- places architect rechecks and independent audit gates;
-- makes the next dispatch obvious to a medium-effort host.
+- exact `underthink:*` role;
+- source pointers or the relevant source excerpt;
+- objective and expected result;
+- read and write boundaries;
+- acceptance evidence;
+- stop conditions.
 
-If the design cannot support a trustworthy route, the planner returns the exact
-gap to the architect. It does not invent missing architecture.
+It also places Fable re-entry gates and independent audit gates. If design is
+missing, Opus returns the gap to Fable instead of inventing it.
 
-### Builder
+## Builder
 
-Dispatch one `underthink:builder` per non-overlapping ready task. The packet must
-already settle objective, scope, constraints, and acceptance evidence.
+Dispatch one builder per non-overlapping ready packet. A builder receives a
+complete task; it is never told to read strategic files and figure out its own
+goal.
 
-The builder follows the packet, implements the change, runs the named checks,
-and returns evidence. If the packet requires architecture or a product choice,
-the builder stops and sends the gap back to the host.
+The builder implements inside the packet's boundaries, runs the named checks,
+and returns evidence. It stops when the packet needs an architecture or product
+decision, crosses scope, or lacks enough information to proceed.
 
-The host compares each return with the dispatch and direct evidence. Re-dispatch
-bounded corrections; do not reward a long transcript as proof of completion.
+The host compares the return with the packet and direct evidence. Re-dispatch
+bounded corrections; do not treat a long transcript as proof.
 
-### Strategic recheck
+## Rechecks and audits
 
-At an architect breakpoint, pause dependent work. Give
-`underthink:architect` the original decisions, completed evidence, current
-implementation, relevant diffs or failures, remaining route, and `ultrathink`.
+At a Fable breakpoint, pause dependent work and provide the original decisions,
+completed evidence, current implementation, relevant diffs or failures, and
+remaining route. Fable returns `continue`, `amend`, `replan`, or `needs-user`.
 
-The architect returns one verdict:
-
-- `continue`: release the next tasks;
-- `amend`: update design guidance and replan affected future work;
-- `replan`: replace the remaining route;
-- `needs-user`: ask its exact question, then resume.
-
-This checks whether the project still means the same thing. It is separate from
-technical review.
-
-### Audit
-
-At a technical or integration gate, give `underthink:auditor` the design,
-dispatches, diffs, tests, artifacts, live evidence, and `ultrathink`.
-
-The auditor tries to disprove completion. Send bounded findings to builders,
-structural findings to the architect, and broken decomposition to the planner.
+At a technical or integration gate, Opus audits the design, dispatches, diffs,
+tests, artifacts, and live evidence. Send bounded findings to builders,
+structural findings to Fable, and decomposition failures to the planner.
 
 ## Finish
 
-Finish only when the observable outcome is verified. Report:
-
-- what changed;
-- the evidence that passed;
-- residual risks or unverified claims;
-- branch, worktree, HEAD, dirty state, and unpushed state;
-- the exact continuation pointer when work remains.
-
-Never merge to the primary branch without explicit permission.
+Finish only when the observable outcome is verified. Report what changed,
+evidence, residual risks, repository state, and the exact continuation pointer
+when work remains. Never merge to the primary branch without explicit
+permission.
 
 ## Examples
 
 ```text
+/underthink resume from SHIP.md and AUDIT.md
 /underthink build the smallest useful version of @notes/brief.md
-/underthink CONTEXT.md already settles the design; plan and execute it
-/underthink the last builder changed a data boundary; recheck the route
 /underthink audit the current diff before I merge it
-/underthink resume from the existing roadmap and stop after one verified item
 ```

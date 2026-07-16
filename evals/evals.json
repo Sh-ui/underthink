@@ -30,13 +30,14 @@
     },
     {
       "id": 3,
-      "prompt": "/underthink continue the next explicit item from the established roadmap and stop after reporting its verified result",
-      "expected_output": "A concise result and repository-state report for one roadmap item, with direct validation evidence and no duplicate architecture or plan.",
+      "prompt": "/underthink execute this single standalone atomic item: change the named constant in src/limit.rs, update its existing test, run the named test command, and stop",
+      "expected_output": "A concise result and repository-state report for the explicitly bounded atomic item, with direct validation evidence and no unnecessary architecture or plan.",
       "files": [],
       "expectations": [
-        "The existing roadmap is treated as settled project intelligence.",
+        "The item already supplies a complete objective, scope, and evidence gate.",
         "No architect or planner is invoked when the task is already atomic.",
-        "A medium-effort Sonnet builder performs the implementation.",
+        "The task is dispatched specifically to underthink:builder.",
+        "The packet gives the builder explicit read and write boundaries.",
         "The host checks the returned evidence before reporting completion."
       ]
     },
@@ -78,6 +79,18 @@
         "The workflow stops before reading project state.",
         "No agent is invoked.",
         "No global or user setting is changed automatically."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "/underthink resume from SHIP.md and AUDIT.md",
+      "expected_output": "Fable reads the strategic sources and settles their meaning, then Opus compiles bounded dispatch packets before any builder starts.",
+      "files": [],
+      "expectations": [
+        "The host passes SHIP.md and AUDIT.md to underthink:architect without a host-authored interpretation.",
+        "underthink:planner runs after Fable reports ready.",
+        "No builder starts before Opus provides a concrete packet with read and write boundaries.",
+        "Only underthink-scoped agents are invoked."
       ]
     }
   ]

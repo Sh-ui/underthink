@@ -8,8 +8,8 @@
     {
       "name": "underthink",
       "source": "./",
-      "description": "Run from Sonnet 5 at medium effort; Fable and Opus handle deep judgment underneath while bounded Sonnet builders execute the plan.",
-      "version": "1.0.1",
+      "description": "Run from Sonnet 5 at medium effort; Fable settles direction, Opus compiles dispatches, and bounded Sonnet builders execute.",
+      "version": "1.0.2",
       "author": {
         "name": "Shui"
       },

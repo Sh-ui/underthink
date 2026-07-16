@@ -21,6 +21,7 @@ Create the smallest useful dependency graph:
 - `underthink:architect` for supplied strategic breakpoints;
 - `underthink:auditor` for technical and integration gates;
 - exact context pointers instead of repeated background;
+- explicit read and write boundaries;
 - objective, expected result, acceptance evidence, and stop conditions;
 - safe parallel groups and explicit convergence points;
 - one unambiguous next dispatch for the Sonnet host.
@@ -28,6 +29,9 @@ Create the smallest useful dependency graph:
 Return the route inline when it fits safely in the session. Persist only the
 minimum resume state when work spans contexts or the project already has a
 suitable roadmap, issue, or task file.
+
+Every runnable packet must give the builder a concrete goal. Do not use a
+strategic document as a substitute for the task.
 
 On replanning, preserve completed work and its evidence. Replace only affected
 future tasks and identify invalidated in-flight work.
@@ -56,6 +60,8 @@ ID:
 DEPENDS:
 ROLE:
 CONTEXT:
+READ:
+WRITE:
 OBJECTIVE:
 EXPECTED:
 ACCEPT:
