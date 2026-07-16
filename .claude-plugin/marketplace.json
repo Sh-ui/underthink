@@ -8,8 +8,8 @@
     {
       "name": "underthink",
       "source": "./",
-      "description": "Sonnet 5 hosts at medium effort while Fable and Opus handle deep judgment underneath and bounded Sonnet builders execute the plan.",
-      "version": "1.0.0",
+      "description": "Run from Sonnet 5 at medium effort; Fable and Opus handle deep judgment underneath while bounded Sonnet builders execute the plan.",
+      "version": "1.0.1",
       "author": {
         "name": "Shui"
       },

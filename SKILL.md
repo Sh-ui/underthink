@@ -1,6 +1,6 @@
 ---
 name: underthink
-description: Route software work through a Sonnet 5 host, deeper architecture and audit agents, and bounded Sonnet builders.
+description: Route software work from a Sonnet 5 medium session through deeper architecture and audit agents and bounded Sonnet builders.
 disable-model-invocation: true
 argument-hint: "[project direction, source, pointer, or constraint]"
 ---
@@ -16,10 +16,27 @@ from the prompt, cwd, conversation, and direct evidence.
 For `help`, explain the workflow and examples without inspecting a project,
 reading the clipboard, changing state, or invoking agents.
 
+## Preflight
+
+Underthink does not change the session's model or effort. Before inspecting a
+project or invoking an agent, verify that the current session is running
+Sonnet 5 at medium effort.
+
+If it is not, stop and tell the user to run:
+
+```text
+/model sonnet
+/effort medium
+```
+
+Then ask them to invoke `/underthink` again. Do not continue the workflow or
+change project state from the wrong host configuration.
+
 ## The joke is the architecture
 
-The main thread is Sonnet 5 at medium effort. It stays quick, holds context, and
-runs the job. It does not imitate the models beneath it.
+The user starts Underthink from a Sonnet 5 session at medium effort. That main
+thread stays quick, holds context, and runs the job. It does not imitate the
+models beneath it.
 
 Fable and Opus do the expensive thinking as subagents:
 

@@ -4,10 +4,11 @@
     {
       "id": 1,
       "prompt": "/underthink help",
-      "expected_output": "A concise explanation of the Sonnet 5 host, the deeper agents underneath it, the bounded builders, and at least one usage example. No project state is inspected and no agents are invoked.",
+      "expected_output": "A concise explanation of the Sonnet 5 medium session precondition, the deeper agents underneath it, the bounded builders, and at least one usage example. No project state is inspected and no agents are invoked.",
       "files": [],
       "expectations": [
-        "The host is identified as Sonnet 5 at medium effort.",
+        "The current session is identified as the host running Sonnet 5 at medium effort.",
+        "The response states that Underthink does not change the session model, effort, or global defaults.",
         "Fable and Opus are described as deeper subagents beneath the host.",
         "Sonnet builders are described as medium-effort executors of settled work.",
         "No project inspection, mutation, clipboard read, or agent invocation occurs."
@@ -65,6 +66,18 @@
         "The planner starts only after design is ready.",
         "The host does not perform the architect's or planner's reasoning itself.",
         "No builder runs."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "/underthink The current session is not Sonnet 5 at medium effort. Start implementing @notes/brief.md.",
+      "expected_output": "A short instruction to switch the current session to Sonnet 5 and medium effort, then invoke Underthink again. No project inspection, agent dispatch, or mutation occurs.",
+      "files": [],
+      "expectations": [
+        "The response includes /model sonnet and /effort medium.",
+        "The workflow stops before reading project state.",
+        "No agent is invoked.",
+        "No global or user setting is changed automatically."
       ]
     }
   ]
