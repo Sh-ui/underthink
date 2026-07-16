@@ -1,0 +1,71 @@
+{
+  "skill_name": "underthink",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/underthink help",
+      "expected_output": "A concise explanation of the Sonnet 5 host, the deeper agents underneath it, the bounded builders, and at least one usage example. No project state is inspected and no agents are invoked.",
+      "files": [],
+      "expectations": [
+        "The host is identified as Sonnet 5 at medium effort.",
+        "Fable and Opus are described as deeper subagents beneath the host.",
+        "Sonnet builders are described as medium-effort executors of settled work.",
+        "No project inspection, mutation, clipboard read, or agent invocation occurs."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/underthink bootstrap an app from the relevant inbox material in a fresh worktree",
+      "expected_output": "A verified outcome or continuation pointer, confirmation that the primary worktree was not modified, and visible evidence that architecture, planning, and implementation were handled by distinct roles.",
+      "files": [],
+      "expectations": [
+        "The host verifies the canonical repository and worktree state before mutation.",
+        "The architect receives primary source pointers rather than a host-authored design.",
+        "The planner runs only after architecture is settled.",
+        "Builders receive bounded task packets and do not make architecture decisions.",
+        "Strategic rechecks and independent audit gates appear in the route.",
+        "No merge occurs without explicit permission."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/underthink continue the next explicit item from the established roadmap and stop after reporting its verified result",
+      "expected_output": "A concise result and repository-state report for one roadmap item, with direct validation evidence and no duplicate architecture or plan.",
+      "files": [],
+      "expectations": [
+        "The existing roadmap is treated as settled project intelligence.",
+        "No architect or planner is invoked when the task is already atomic.",
+        "A medium-effort Sonnet builder performs the implementation.",
+        "The host checks the returned evidence before reporting completion."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "/underthink We reached an architecture breakpoint. Tests pass, but a builder introduced a cache and changed the data boundary. Recheck the route before continuing.",
+      "expected_output": "A strategic verdict of continue, amend, replan, or needs-user, grounded in the original design and the changed boundary. No dependent builder starts before the verdict.",
+      "files": [],
+      "expectations": [
+        "The host pauses dependent work.",
+        "The Fable architect receives the original decisions, completed evidence, boundary change, and remaining route.",
+        "The architect reviews system direction rather than code style.",
+        "Only affected future work is replanned after an amend or replan verdict.",
+        "A technical audit is not substituted for the architecture recheck."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "/underthink use evals/vague-brief.md to settle the design and prepare the route, but stop before implementation",
+      "expected_output": "Settled design pointers, a bounded execution route, strategic recheck predicates, and audit gates. No builder is invoked and no product code changes.",
+      "files": [
+        "evals/vague-brief.md"
+      ],
+      "expectations": [
+        "The architect reads the primary brief.",
+        "Material product choices are returned as host-ready questions.",
+        "The planner starts only after design is ready.",
+        "The host does not perform the architect's or planner's reasoning itself.",
+        "No builder runs."
+      ]
+    }
+  ]
+}

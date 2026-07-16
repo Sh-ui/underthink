@@ -1,0 +1,28 @@
+{
+  "name": "underthink",
+  "description": "Put the deep thinking underneath the work.",
+  "owner": {
+    "name": "Shui"
+  },
+  "plugins": [
+    {
+      "name": "underthink",
+      "source": "./",
+      "description": "Sonnet 5 hosts at medium effort while Fable and Opus handle deep judgment underneath and bounded Sonnet builders execute the plan.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Shui"
+      },
+      "homepage": "https://github.com/Sh-ui/underthink",
+      "repository": "https://github.com/Sh-ui/underthink",
+      "license": "MIT",
+      "category": "development",
+      "tags": [
+        "multi-agent",
+        "software-development",
+        "planning",
+        "verification"
+      ]
+    }
+  ]
+}

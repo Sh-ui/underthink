@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "underthink",
+  "displayName": "Underthink",
+  "version": "1.0.0",
+  "description": "Sonnet 5 hosts at medium effort while Fable and Opus handle deep judgment underneath and bounded Sonnet builders execute the plan.",
+  "author": {
+    "name": "Shui",
+    "url": "https://github.com/Sh-ui"
+  },
+  "homepage": "https://github.com/Sh-ui/underthink",
+  "repository": "https://github.com/Sh-ui/underthink",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "multi-agent",
+    "software-development",
+    "planning",
+    "verification"
+  ]
+}
